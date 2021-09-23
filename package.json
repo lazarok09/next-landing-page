@@ -8,7 +8,7 @@
     "start": "next start",
     "export": "next export",
     "deploy-static": "npm run build && npm run export",
-    "lint": "eslint src --max-warnings=0",
+    "lint": "next lint",
     "lint-staged": "lint-staged",
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook",
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
+    "@next/eslint-plugin-next": "^11.1.2",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",

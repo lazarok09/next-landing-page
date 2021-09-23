@@ -10,6 +10,7 @@ export const LogoLink = ({ text, srcImage = '', link }) => {
       <Heading size="small" uppercase>
         <Link href={link} passHref>
           <Styled.Container>
+            {/* eslint-disable-next-line */}
             {srcImage ? <img src={srcImage} alt={text} /> : text}
           </Styled.Container>
         </Link>
@@ -19,6 +20,7 @@ export const LogoLink = ({ text, srcImage = '', link }) => {
   return (
     <Heading size="small" uppercase>
       <Styled.Container href={link}>
+        {/* eslint-disable-next-line */}
         {srcImage ? <img src={srcImage} alt={text} /> : text}
       </Styled.Container>
     </Heading>

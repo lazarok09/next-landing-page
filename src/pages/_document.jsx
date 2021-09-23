@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 import { ServerStyleSheet } from 'styled-components';
