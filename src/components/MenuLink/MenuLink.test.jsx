@@ -21,6 +21,17 @@ describe('<MenuLink />', () => {
       '_blank',
     );
   });
+  it('should render menu link with a outside target', () => {
+    renderTheme(
+      <MenuLink link="/target" newTab={true}>
+        Children
+      </MenuLink>,
+    );
+    expect(screen.getByRole('link', { name: 'Children' })).toHaveAttribute(
+      'href',
+      '/target',
+    );
+  });
   it('should match inline snapshot', () => {
     const { container } = renderTheme(
       <MenuLink link="http://localhost" newTab={false}>
