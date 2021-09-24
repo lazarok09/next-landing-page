@@ -7,6 +7,7 @@ import { GridText } from './../../components/GridText/index';
 import { GridImage } from './../../components/GridImage/index';
 import config from '../../config';
 import Head from 'next/head';
+import { theme } from './../../styles/theme';
 
 function Home({ data }) {
   if (!data || !data.length) {
@@ -25,6 +26,12 @@ function Home({ data }) {
         <title>
           {title} | {config.siteName}
         </title>
+
+        <meta name="theme-color" content={theme.colors.primaryColor} />
+        <meta
+          name="description"
+          content="um website utilizando o framework next.js com o react e consumindo API no strapi "
+        />
       </Head>
       {sections.map((sections, index) => {
         const { component } = sections;
