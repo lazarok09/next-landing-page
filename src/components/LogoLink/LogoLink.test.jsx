@@ -10,7 +10,7 @@ describe('<LogoLink />', () => {
       '#target',
     );
   });
-  it('should render link with a outside target', () => {
+  it('should render link with a internal link', () => {
     renderTheme(<LogoLink link="/target" text="olá mundo" />);
     expect(screen.getByRole('link', { name: /olá mundo/i })).toHaveAttribute(
       'href',
@@ -20,6 +20,16 @@ describe('<LogoLink />', () => {
   it('should render image logo', () => {
     renderTheme(
       <LogoLink link="#target" text="Olá mundo" srcImage="image.jpg" />,
+    );
+
+    expect(screen.getByAltText('Olá mundo')).toHaveAttribute(
+      'src',
+      'image.jpg',
+    );
+  });
+  it('should render image logo with internal link', () => {
+    renderTheme(
+      <LogoLink link="/target" text="Olá mundo" srcImage="image.jpg" />,
     );
 
     expect(screen.getByAltText('Olá mundo')).toHaveAttribute(

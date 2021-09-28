@@ -21,7 +21,7 @@ describe('<MenuLink />', () => {
       '_blank',
     );
   });
-  it('should render menu link with a outside target', () => {
+  it('should render menu link with a internal link', () => {
     renderTheme(
       <MenuLink link="/target" newTab={true}>
         Children
