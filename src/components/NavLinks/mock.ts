@@ -1,3 +1,5 @@
+import { MenuLinkProps } from '../MenuLink';
+
 export default [
   {
     children: 'link 1',
@@ -48,5 +50,5 @@ export default [
     children: 'link 10',
     link: '#target10',
     newTab: false,
-  },
+  } as MenuLinkProps,
 ];
