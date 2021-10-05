@@ -1,16 +1,22 @@
-import P from 'prop-types';
 import * as Styled from './styles';
-import { SectionBackground } from './../SectionBackground/index';
-import { Heading } from './../Heading/index';
-import { TextComponent } from './../TextComponent/index';
+import { SectionBackground } from '../SectionBackground/index';
+import { Heading } from '../Heading/index';
+import { TextComponent } from '../TextComponent/index';
 
+export type GridTwoColumnsProps = {
+  title: string;
+  text: string;
+  srcImage: string;
+  background?: boolean;
+  sectionId?: string;
+};
 export const GridTwoColumns = ({
   title,
   text,
   srcImage,
   background = false,
   sectionId = '',
-}) => {
+}: GridTwoColumnsProps) => {
   return (
     <SectionBackground background={background} sectionId={sectionId}>
       <Styled.Container>
@@ -26,12 +32,4 @@ export const GridTwoColumns = ({
       </Styled.Container>
     </SectionBackground>
   );
-};
-
-GridTwoColumns.propTypes = {
-  title: P.string.isRequired,
-  text: P.string.isRequired,
-  srcImage: P.string.isRequired,
-  background: P.bool,
-  sectionId: P.string,
 };
