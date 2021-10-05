@@ -1,20 +1,20 @@
 import { useState } from 'react';
-
-import P from 'prop-types';
-
 import * as Styled from './styles';
 
-import { SectionContainer } from './../SectionContainer/index';
-
-import { LogoLink } from './../LogoLink/index';
-
-import { NavLinks } from './../NavLinks/index';
+import { SectionContainer } from '../SectionContainer/index';
+import { LogoLink, LogoLinkProps } from '../LogoLink/index';
+import { NavLinks } from '../NavLinks/index';
 
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
-
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
+import { MenuLinkProps } from '../MenuLink';
 
-export const Menu = ({ links = [], logoData }) => {
+export type MenuProps = {
+  links?: MenuLinkProps[];
+  logoData: LogoLinkProps;
+};
+
+export const Menu = ({ links = [], logoData }: MenuProps) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -42,10 +42,4 @@ export const Menu = ({ links = [], logoData }) => {
       </Styled.Container>
     </>
   );
-};
-
-Menu.propTypes = {
-  ...NavLinks.propTypes,
-
-  logoData: P.shape(LogoLink.propTypes).isRequired,
 };

@@ -6,7 +6,7 @@ import linksMock from '../NavLinks/mock';
 
 import { theme } from '../../styles/theme';
 
-import { renderTheme } from './../../styles/render-theme';
+import { renderTheme } from '../../styles/render-theme';
 
 const logoData = {
   text: 'Logo',
@@ -17,9 +17,7 @@ const logoData = {
 describe('<Menu />', () => {
   it('should render Logo and Main Menu Nav', () => {
     const { container } = renderTheme(
-      <Menu links={linksMock} logoData={logoData}>
-        Children
-      </Menu>,
+      <Menu links={linksMock} logoData={logoData} />,
     );
 
     expect(screen.getByRole('heading', { name: 'Logo' })).toBeInTheDocument();
@@ -32,11 +30,7 @@ describe('<Menu />', () => {
   });
 
   it('should render menu mobile and button for open and close the menu', () => {
-    const { container } = renderTheme(
-      <Menu links={linksMock} logoData={logoData}>
-        Children
-      </Menu>,
-    );
+    renderTheme(<Menu links={linksMock} logoData={logoData} />);
 
     const button = screen.getByLabelText('Open/Close menu');
 
