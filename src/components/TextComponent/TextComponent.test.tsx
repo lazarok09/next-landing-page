@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import { renderTheme } from '../../styles/render-theme';
 import { TextComponent } from '.';
-import { theme } from './../../styles/theme';
+import { theme } from '../../styles/theme';
 
 describe('<TextComponent />', () => {
   it('should render TextComponent with Children as text', () => {
