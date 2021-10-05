@@ -1,8 +1,14 @@
-import P from 'prop-types';
 import * as Styled from './styles';
-import { Heading } from './../Heading/index';
+import { Heading } from '../Heading/index';
 import Link from 'next/link';
-export const LogoLink = ({ text, srcImage = '', link }) => {
+
+export type LogoLinkProps = {
+  text: string;
+  srcImage?: string;
+  link: string;
+};
+
+export const LogoLink = ({ text, srcImage = '', link }: LogoLinkProps) => {
   const nextLink = link.match(/^\//) ? true : false;
 
   if (nextLink) {
@@ -25,10 +31,4 @@ export const LogoLink = ({ text, srcImage = '', link }) => {
       </Styled.Container>
     </Heading>
   );
-};
-
-LogoLink.propTypes = {
-  text: P.string.isRequired,
-  srcImage: P.string,
-  link: P.string.isRequired,
 };
