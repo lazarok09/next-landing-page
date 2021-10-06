@@ -1,16 +1,26 @@
-import P from 'prop-types';
 import * as Styled from './styles';
 import { SectionBackground } from './../SectionBackground/index';
 import { Heading } from './../Heading/index';
 import { TextComponent } from './../TextComponent/index';
 
+export type GridImageElementProps = {
+  altText: string;
+  srcImage: string;
+};
+export type GridImageProps = {
+  background?: boolean;
+  title: string;
+  description: string;
+  grid?: GridImageElementProps[];
+  sectionId?: string;
+};
 export const GridImage = ({
   title,
   description,
   grid,
   background = false,
   sectionId = '',
-}) => {
+}: GridImageProps) => {
   return (
     <SectionBackground background={background} sectionId={sectionId}>
       <Styled.Container>
@@ -28,17 +38,4 @@ export const GridImage = ({
       </Styled.Container>
     </SectionBackground>
   );
-};
-
-GridImage.propTypes = {
-  background: P.bool,
-  title: P.string.isRequired,
-  description: P.string.isRequired,
-  sectionId: P.string,
-  grid: P.arrayOf(
-    P.shape({
-      altText: P.string.isRequired,
-      srcImage: P.string.isRequired,
-    }),
-  ).isRequired,
 };
