@@ -1,20 +1,45 @@
-import P from 'prop-types';
 import { Base } from '../Base';
-import { GridTwoColumns } from './../../components/GridTwoColumn/index';
-import { GridContent } from './../../components/GridContent/index';
-import { GridText } from './../../components/GridText/index';
-import { GridImage } from './../../components/GridImage/index';
+import {
+  GridTwoColumns,
+  GridTwoColumnsProps,
+} from '../../components/GridTwoColumn/index';
+import {
+  GridContent,
+  GridContentProps,
+} from '../../components/GridContent/index';
+import { GridText, GridTextProps } from '../../components/GridText/index';
+import { GridImage, GridImageProps } from '../../components/GridImage/index';
 import config from '../../config';
 import Head from 'next/head';
-import { theme } from './../../styles/theme';
+import { theme } from '../../styles/theme';
 import { PageNotFounded } from '../PageNotFounded';
+import { LogoLinkProps } from '../../components/LogoLink';
+import { MenuLinkProps } from '../../components/MenuLink';
 
-function Home({ data }) {
+type PageData = {
+  title: string;
+  slug: string;
+  footerHtml: string;
+  menu: LogoLinkProps & { links: MenuLinkProps[] };
+  sections: SectionProps[];
+};
+export type SectionProps = (
+  | GridImageProps
+  | GridTextProps
+  | GridTwoColumnsProps
+  | GridContentProps
+) & { component: string };
+
+export type HomeProps = {
+  data: PageData[];
+};
+
+function Home({ data }: HomeProps) {
   if (!data || !data.length) {
     return <PageNotFounded />;
   }
-  const { footerHtml, menu, sections, slug, title } = data[0];
-  const { link, links, srcImage, text } = menu;
+  const { menu, sections, footerHtml, slug, title } = data[0];
+  const { links, link, srcImage, text } = menu;
 
   return (
     <Base
@@ -38,22 +63,24 @@ function Home({ data }) {
         // home e por ultimo o networking
         if (component === 'section.section-two-columns') {
           const key = `${slug}-${index}`;
-          return <GridTwoColumns key={key} {...sections} />;
+          return (
+            <GridTwoColumns key={key} {...(sections as GridTwoColumnsProps)} />
+          );
         }
         // top 3 areas e salário logo depois de as 3 vertentes
         if (component === 'section.section-content') {
           const key = `${slug}-${index}`;
-          return <GridContent key={key} {...sections} />;
+          return <GridContent key={key} {...(sections as GridContentProps)} />;
         }
         // galeria
         if (component === 'section.section-grid-image') {
           const key = `${slug}-${index}`;
-          return <GridImage key={key} {...sections} />;
+          return <GridImage key={key} {...(sections as GridImageProps)} />;
         }
         //as 3 vertentes
         if (component === 'section.section-grid-text') {
           const key = `${slug}-${index}`;
-          return <GridText key={key} {...sections} />;
+          return <GridText key={key} {...(sections as GridTextProps)} />;
         }
       })}
     </Base>
@@ -61,7 +88,3 @@ function Home({ data }) {
 }
 
 export default Home;
-
-Home.propTypes = {
-  data: P.array,
-};
