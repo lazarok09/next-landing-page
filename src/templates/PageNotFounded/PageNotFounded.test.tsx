@@ -1,6 +1,6 @@
-import { PageNotFounded } from './index';
 import { screen } from '@testing-library/react';
-import { renderTheme } from './../../styles/render-theme';
+import { PageNotFounded } from '.';
+import { renderTheme } from '../../styles/render-theme';
 describe('<PageNotFounded />', () => {
   it('should render PageNotFounded correctly', () => {
     const { container } = renderTheme(<PageNotFounded />);

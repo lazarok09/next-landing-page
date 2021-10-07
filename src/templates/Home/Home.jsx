@@ -1,6 +1,5 @@
 import P from 'prop-types';
 import { Base } from '../Base';
-import { PageNotFounded } from './../../components/PageNotFounded/index';
 import { GridTwoColumns } from './../../components/GridTwoColumn/index';
 import { GridContent } from './../../components/GridContent/index';
 import { GridText } from './../../components/GridText/index';
@@ -8,6 +7,7 @@ import { GridImage } from './../../components/GridImage/index';
 import config from '../../config';
 import Head from 'next/head';
 import { theme } from './../../styles/theme';
+import { PageNotFounded } from '../PageNotFounded';
 
 function Home({ data }) {
   if (!data || !data.length) {
