@@ -27,6 +27,13 @@ describe('<LogoLink />', () => {
       'image.jpg',
     );
   });
+  it('should render a link with target blank', () => {
+    renderTheme(<LogoLink link="#target" text="Olá mundo" newTab={true} />);
+
+    expect(
+      screen.getByRole('heading', { name: 'Olá mundo' }),
+    ).toBeInTheDocument();
+  });
   it('should render image logo with internal link', () => {
     renderTheme(
       <LogoLink link="/target" text="Olá mundo" srcImage="image.jpg" />,
