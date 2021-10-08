@@ -16,19 +16,18 @@ import { PageNotFounded } from '../PageNotFounded';
 import { LogoLinkProps } from '../../components/LogoLink';
 import { MenuLinkProps } from '../../components/MenuLink';
 
-type PageData = {
+export type PageData = {
   title: string;
   slug: string;
   footerHtml: string;
   menu: LogoLinkProps & { links: MenuLinkProps[] };
   sections: SectionProps[];
 };
-export type SectionProps = (
+export type SectionProps =
   | GridImageProps
   | GridTextProps
   | GridTwoColumnsProps
-  | GridContentProps
-) & { component: string };
+  | GridContentProps;
 
 export type HomeProps = {
   data: PageData[];
